@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiyaranjan - Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b111e;
+            --sidebar-color: #080d18;
+            --card-bg: #0e1e2e;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-yellow: #d4af37; /* Adjusted to match the subtle gold/yellow outline */
+            --accent-green: #bef264;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR STYLING --- */
+        aside {
+            width: 260px;
+            background-color: var(--sidebar-color);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            border-right: 1px solid #13233c;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #1e293b; /* Placeholder if image missing */
+            margin-bottom: 15px;
+            border: 2px solid #334155;
+            object-fit: cover;
+        }
+
+        .profile-section h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-section p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding-left: 20px;
+            margin-bottom: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: var(--text-main);
+        }
+
+
+        /* --- MAIN CONTENT STYLING --- */
+        main {
+            margin-left: 260px;
+            flex: 1;
+            padding: 80px 10%;
+            max-width: 1200px;
+        }
+
+        /* Intro */
+        .intro-section {
+            margin-bottom: 80px;
+        }
+
+        .greeting {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .intro-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-section .lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* Section Commons */
+        section {
+            margin-bottom: 80px;
+        }
+
+        section h2.section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
+        .btn-view-all {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0 auto;
+            padding: 12px 35px;
+            background: transparent;
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-all:hover {
+            background: var(--accent-yellow);
+            color: var(--bg-color);
+        }
+
+        /* --- WORK SECTION --- */
+        .work-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            min-height: 220px;
+            border: 1px solid #162a41;
+        }
+
+        .project-img-wrapper {
+            width: 30%;
+            background: #091420;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-right: 1px solid #162a41;
+        }
+
+        /* Mockup layouts for project items */
+        .battleship-mock {
+            display: grid;
+            grid-template-columns: repeat(4, 25px);
+            grid-template-rows: repeat(4, 25px);
+            gap: 2px;
+            background: #112235;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #243b55;
+        }
+        .battleship-mock div {
+            background: #0b111e;
+            border: 0.5px solid #1e3a8a;
+        }
+
+        .music-mock {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1e1b4b, #311042);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ec4899;
+        }
+
+        .project-info {
+            width: 70%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- WRITINGS SECTION --- */
+        .writings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #162a41;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-banner {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .banner-bj {
+            background: #0ea5e9;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .banner-cp {
+            background: #f5efe6;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .color-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            filter: blur(4px); /* giving it that soft blur look from your image */
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .author-img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #334155;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            text-align: left;
+            margin-bottom: 120px;
+        }
+
+        .contact-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid #13233c;
+            padding-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer .name {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            aside {
+                width: 100%;
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #13233c;
+            }
+            .nav-links {
+                flex-direction: row;
+                justify-content: center;
+                padding-left: 0;
+                margin: 20px 0;
+            }
+            .social-icons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            main {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+            .project-card {
+                flex-direction: column;
+            }
+            .project-img-wrapper, .project-info {
+                width: 100%;
+            }
+            .writings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="profile-section">
+            <img class="avatar" src="amiya.jpeg" alt="Amiya">
+            <h2>Amiyarajan</h2>
+            <p>Web Developer</p>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#intro">1.0 Intro</a></li>
+            <li><a href="#work">2.0 Work</a></li>
+            <li><a href="#writings">3.0 Writings</a></li>
+            <li><a href="#contact">4.0 Contact</a></li>
+        </ul>
+
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+            <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+    </aside>
+
+    <main>
+        
+        <section id="intro" class="intro-section">
+            <div class="greeting">Hello 👋 my name is Amiya</div>
+            <h1>I code beautiful websites.</h1>
+            <p class="lead">I'm a full stack web developer based out of India. Welcome to my portfolio!</p>
+        </section>
+
+        <section id="work">
+            <h2 class="section-title">My work</h2>
+            <div class="work-grid">
+                
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="battleship-mock">
+                            <div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Battleship Game</h3>
+                        <p>The classic Battleship game that's written using HTML, CSS and vanilla JS. Give it a go!</p>
+                        <a href="#" class="project-link">view in neetocode <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="music-mock">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Music Streaming App</h3>
+                        <p>A music streaming app built using React JS and using API to fetch the tracks to stream.</p>
+                        <a href="#" class="project-link">view in neetocode <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#" class="btn-view-all">VIEW ALL</a>
+        </section>
+
+        <section id="writings">
+            <h2 class="section-title">Writings</h2>
+            <div class="writings-grid">
+                
+                <div class="blog-card">
+                    <div class="blog-banner">
+                        <div class="banner-bj">Bonjour</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>my top 10 go to typefaces</h3>
+                        <div class="blog-meta">
+                            <div class="author-img"></div>
+                            <span>Amiyaranjan</span>
+                            <span>•</span>
+                            <span>1 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-banner">
+                        <div class="banner-cp">
+                            <div class="color-circle" style="background: #e2d4b7;"></div>
+                            <div class="color-circle" style="background: #3b82f6;"></div>
+                            <div class="color-circle" style="background: #78350f;"></div>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Color palettes that I cannot live without</h3>
+                        <div class="blog-meta">
+                            <div class="author-img"></div>
+                            <span>Amiyaranjan</span>
+                            <span>•</span>
+                            <span>1 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#" class="btn-view-all">VIEW ALL</a>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Get in touch with me</h2>
+            <p>Have an opportunity for me to help you with anything? Feel free to schedule a call with me</p>
+            <a href="#" class="btn-view-all" style="margin: 0;">BOOK A SESSION</a>
+        </section>
+
+        <footer>
+            <span class="name">Amiyaranjan</span>
+            <div class="footer-links">
+                <a href="#">Github</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Email</a>
+                <a href="#">Schedule a call</a>
+                <a href="#">Resume</a>
+                <a href="#">Blog</a>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>

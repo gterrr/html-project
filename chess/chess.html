@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chess Board</title>
+    <style>
+        /* 1. Page Background Setup */
+        body {
+            background-color: #ffe6cc; /* Cream background */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #1e3d59;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* 2. White board container with a shadow */
+        .board-container {
+            background-color: #ffffff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 3. The Grid Layout: 8 columns, each 75px wide */
+        .chess-board {
+            display: grid;
+            grid-template-columns: repeat(8, 75px);
+            grid-template-rows: repeat(8, 75px);
+        }
+
+        /* 4. Common Square Setup */
+        .square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* 5. Simple Square Colors (No math rules!) */
+        .white {
+            background-color: #ffffff;
+        }
+
+        .gray {
+            background-color: #808080;
+        }
+
+        /* 6. Chess Piece Styles */
+        .white-piece {
+            color: #ffffff;
+            /* Creates the black outline/shadow look */
+            filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) drop-shadow(0 0 1px #000);
+        }
+
+        .black-piece {
+            color: #000000;
+            filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.4));
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chess Board</h1>
+
+    <div class="board-container">
+        <div class="chess-board">
+            
+            <div class="square white white-piece">&#9814;</div>
+            <div class="square gray white-piece">&#9817;</div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white black-piece">&#9817;</div>
+            <div class="square gray black-piece">&#9814;</div>
+
+            <div class="square gray white-piece">&#9816;</div>
+            <div class="square white white-piece">&#9817;</div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray black-piece">&#9817;</div>
+            <div class="square white black-piece">&#9816;</div>
+
+            <div class="square white white-piece">&#9815;</div>
+            <div class="square gray white-piece">&#9817;</div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white black-piece">&#9817;</div>
+            <div class="square gray black-piece">&#9815;</div>
+
+            <div class="square gray white-piece">&#9813;</div>
+            <div class="square white white-piece">&#9817;</div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray black-piece">&#9817;</div>
+            <div class="square white black-piece">&#9812;</div>
+
+            <div class="square white white-piece">&#9812;</div>
+            <div class="square gray white-piece">&#9817;</div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white black-piece">&#9817;</div>
+            <div class="square gray black-piece">&#9813;</div>
+
+            <div class="square gray white-piece">&#9815;</div>
+            <div class="square white white-piece">&#9817;</div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray black-piece">&#9817;</div>
+            <div class="square white black-piece">&#9815;</div>
+
+            <div class="square white white-piece">&#9816;</div>
+            <div class="square gray white-piece">&#9817;</div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white black-piece">&#9817;</div>
+            <div class="square gray black-piece">&#9816;</div>
+
+            <div class="square gray white-piece">&#9814;</div>
+            <div class="square white white-piece">&#9817;</div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray"></div>
+            <div class="square white"></div>
+            <div class="square gray black-piece">&#9817;</div>
+            <div class="square white black-piece">&#9814;</div>
+
+        </div>
+    </div>
+
+</body>
+</html>
